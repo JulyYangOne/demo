@@ -1,0 +1,103 @@
+*{
+  margin: 0;
+  bottom: 0;
+}
+
+//装按钮的盒子
+.pages-btn{
+  width: 100%;
+  height: 50px;
+  background:#3C3F41;
+  position: relative;
+  //border: 1px solid #000;
+  input:nth-child(1){
+    position: absolute;
+    left: 55%;
+    transform: translateY(-50%);
+  }
+  input:nth-child(2){
+    position: absolute;
+    left: 45%;
+    transform: translateY(-50%);
+  }
+input{
+  //border:1px #ff0000 solid;
+  background:gray;
+  border-radius: 5px;
+  color:white;
+  //list-style: none;
+}
+}
+ul{
+  list-style: none;
+}
+html,body,.box{
+  width: 100%;
+  height: 100%;
+}
+.box{
+  .product{
+    width: 1050px;
+    overflow: hidden;
+    margin: 0 auto;
+    .product-price{
+      width: 100%;
+     li{
+       position: relative;
+       width: 200px;
+       height: 250px;
+       float: left;
+       border: 1px solid #ff99ff;
+       padding: 5px;
+       box-sizing: border-box;
+      .img{
+        width: 120px;
+        height: 130px;
+        //background:gold;
+        margin: 0 auto;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+       .brand{
+         width: 100%;
+         text-align: center;
+       }
+       //描述的文字
+       p{
+         font-size: 14px;
+         color: #AFB5BA;
+         text-indent: 1em;
+         margin-top: 5px;
+         text-align: center;
+       }
+         //价格部分
+       .price{
+         width: 100%;
+         color:red;
+         font-size: 14px;
+         text-align: center;
+         margin-top: 10px;
+         position: absolute;
+         bottom: 10px;
+         span{
+           display: block;
+           width: 100%;
+           text-align: center;
+         }
+       }
+     }
+    }
+  }
+  .product-details{
+    width: 100%;
+    height: 30px;
+    border: 1px solid #000;
+    >ul{
+        li{
+          float: left;
+        }
+    }
+  }
+}

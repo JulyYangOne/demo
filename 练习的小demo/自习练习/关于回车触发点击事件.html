@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<input id="ipt" type="text"/>
+<button class="btn">按钮</button>
+<script>
+    var btn = document.querySelector(".btn");
+    btn.onclick = function () {
+        console.log(1111);
+    }
+    var ipt = document.getElementById("ipt");
+    document.onkeyup = function () {
+        if (event.keyCode == 13) {
+            btn.onclick();
+			console.log(1);
+        }
+    }
+
+
+</script>
+</body>
+</html>

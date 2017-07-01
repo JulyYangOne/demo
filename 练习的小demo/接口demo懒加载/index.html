@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        
+        .bigBox{
+            width: 100px;
+            height: 2000px;
+            border: 1px solid #000;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+<div class="pages-btn">
+    <input type="button" value="上一页"/>
+    <input type="button" value="下一页"/>
+
+</div>
+<!-- <div class="bigBox"></div> -->
+<div class="box">
+    <div class="product">
+        <!--<ul>-->
+            <!--<li>-->
+                <!--<div class="img">-->
+                    <!--<img src="img/gougou.jpg" alt="这是图片" title="这是图片"/>-->
+                <!--</div>-->
+                <!--<div class="brand">-->
+                    <!--<span>品牌:</span>-->
+                    <!--<a href="javascript:;">卡诗顿</a>-->
+                    <!--<input type="hidden" value=""/>-->
+                <!--</div>-->
+                <!--<p>"车载、USB、办公、多功能空气净化机"</p>-->
+
+                <!--<div class="price">-->
+                    <!--<span>价格: $100</span>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    </div>
+    <!-- <div class="product-details">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    </div> -->
+</div>
+
+</body>
+</html>
+<script type="text/html" id="template">
+   <div>
+      <ul class="product-price" id="top">
+       {{each message}}
+       <li>
+           <div class="img">
+               <img src="http://test.testfl.limofang.cn{{$value.thumbnailImage}}" alt="{{$value.name}}" title="这是图片"/>
+           </div>
+           <div class="brand">
+               <span>品牌:</span>
+               <a href="javascript:;">{{$value.brand.name}}</a>
+               <input type="hidden" value="{{$value.brand.name.id}}"/>
+           </div>
+           <p>{{$value.name}}</p>
+
+           <div class="price">
+               <span>价格: ￥{{$value.providerMarketPrice}}</span>
+           </div>
+       </li>
+       {{/each}}
+   </ul>
+   
+   <a href="#top">回到顶部</a>
+
+
+
+   </div>
+
+
+</script>
+
+<script src="jquery.min.js"></script>
+<script src="template-web.js"></script>
+<script>
+//    "http://test.testfl.limofang.cn/2015/11/5735510111807455333.jpg"
+//thumbnailImage
+//var dH = $(document).height();
+//var wH = $(window).height();
+//console.log(dH+"=>"+wH);
+
+myAjax(1);
+var flag = true;
+function myAjax(page){
+      $.ajax({
+          url:"http://test.testfl.limofang.cn/openApi/product/data.php",
+          type:"get",
+          data:{
+              page:page
+          },
+          success: function (res) {
+              if(!JSON.parse(res).isOk){
+                  alert("没有更多了,请返回");
+              }
+              var $template = $("#template").html();
+              var result = template.render($template,JSON.parse(res));
+              var $result =$(result);
+              $(".product").append($result);
+              flag = true;
+          }
+      })
+  }
+$(window).on("mousewheel",function(){
+//    console.log($(document).scrollTop());
+    if(flag == false){
+        return;
+    }
+//    body盒子的高度
+    var pageHeight= $(document).height();
+    // console.log(pageHeight);
+//    获取的是窗口的可视区域的高度
+    var windowHeight= $(window).height();
+    //滚的高度
+    var scrollT=$(document).scrollTop();
+//   console.log(windowHeight+"pageHeight=>"+pageHeight+"scrollT=>"+scrollT);
+     //这是屏幕高度和剩余页面高度的比 ，当滚轮滚动的时候，比例越来越大，当比例大于0.8时发送ajax请求
+    var  percent=windowHeight /(pageHeight-scrollT);
+    // console.log(percent)
+        var  page=parseInt(Math.random()*14+1);
+//    console.log(page);
+    //
+    if(percent>0.8){
+        myAjax(page);
+        flag = false;
+
+//       return;
+    }
+})
+
+</script>

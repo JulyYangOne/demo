@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="lib/jquery.min.js"></script>
+<script>
+    //forEach的使用
+//    var  arr = [1,2,3,4,5];
+//    var str = [];
+//    arr.forEach(function (v,i,a) {
+//        if(v==4){
+//            str.push(v);
+//        }
+//    })
+//
+//    console.log(str);
+
+    $.ajax({
+        url:"http://test.testfl.limofang.cn/openApi/product/data.php",
+        type:"get",
+        data:{
+            int:4
+        },
+        success: function (res) {
+//            console.log(res);
+            var arr = JSON.parse(res);
+            console.log(arr);
+        }
+    })
+
+
+
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>july</title>
+</head>
+<body>
+<textarea id="editor_id" name="content" style="width:700px;height:300px;">
+&lt;strong&gt;HTML内容&lt;/strong&gt;
+</textarea>
+<button id="btn">按钮</button>
+
+	
+</body>
+</html>
+<script  src="./kindeditor/kindeditor-all-min.js"></script>
+<script  src="./kindeditor/lang/zh-CN.js"></script>
+<script>
+        
+var btn = document.getElementById("btn");
+var editor1 = document.getElementById("editor_id");
+
+
+
+        var editor=KindEditor.create("#editor_id");
+        //失去焦点再加载
+      editor.afterBlur=function(){
+        this.sync();
+        btn.onclick = function(){
+	   console.log(editor.html());
+}
+      }
+</script>

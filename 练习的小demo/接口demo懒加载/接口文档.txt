@@ -1,0 +1,23 @@
+﻿接口说明：
+	请求url：http://test.testfl.limofang.cn/openApi/product/data.php
+	请求类型：GET
+	请求参数：
+		参数名称：page
+		参数类型:int（数字，默认为1，最小值为1，分页使用）
+		参数作用：数据分页当前页数
+		是否必须：否
+	返回值：
+		类型：json
+		名称：
+			isOk：请求结果状态，boolean类型，true表示请求成功，false表示请求失败
+			message：请求数据，json数组类型
+				json数组 item 说明：
+						id：产品ID，int类型
+						name：产品名称，字符串
+						thumbnailImage：产品缩略图，字符串
+						productCode：产品型号，字符串
+						status.description：产品状态，字符串
+						marketPrice：产品市场价，数字
+						retailPrice：产品零售价，数字
+						productPlace：产品生产地，字符串
+						features：产品描述，字符串
